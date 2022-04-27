@@ -1,11 +1,8 @@
-import kernel_baselines as kb
 import auxiliarymethods.datasets as dp
+from auxiliarymethods.reader import tud_to_networkx
 
-use_labels, use_edge_labels = True, False
-dataset = "ENZYMES"
-
+dataset = "PROTEINS"
 # Download dataset.
-classes = dp.get_dataset(dataset)
-
-iterations = 3
-gram_matrix = kb.compute_wl_1_dense(dataset, iterations, use_labels, use_edge_labels)
+dp.get_dataset(dataset)
+# Output dataset as a list of graphs.
+graph_db = tud_to_networkx(dataset)
